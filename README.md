@@ -4,7 +4,7 @@
 - Maven 3.9
 - MySQL 8
 
-# Technologies 
+# Technologiesss
 - Spring MVC
 - Spring Security
 - Spring Data JPA
