@@ -37,6 +37,20 @@ pipeline {
                 sh 'mvn -s settings.xml checkstyle:checkstyle'
             }
         }
+        stage('sonar Analysis') {
+            environment {
+                scannerHome = tool "${SONARSCANNER}"
+            }
+            steps {
+                withSonarQubeEnv("${SONARSERVER}") {
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile-project \
+                    -Dsonar.projectName=vprofile \
+                    -Dsonar.projectVersion=0.1 \
+                    -Dsonar.sources=src 
+                    '''
+                }
+            }
+        }
     }
 
 }
